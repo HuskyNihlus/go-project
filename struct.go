@@ -41,3 +41,7 @@ func main() {
 		fmt.Printf("On=%t Power=%d Shoot()=%t\n", testStruct.On, testStruct.Power, lol)
 	}
 }
+
+//Если значение On == false, то оба метода вернут false.
+//Делать Shoot можно только при наличии Ammo (тогда Ammo уменьшается на единицу, а метод возвращает true)
+//Метод RideBike работает также, но только зависит от свойства Power
