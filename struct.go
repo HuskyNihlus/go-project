@@ -1,25 +1,43 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 )
-func main() {
-	var flag int
-	flag = 1
-	text, _ := bufio.NewReader(os.Stdin).ReadString('\n')
-	var str = []rune(text)
-	for i := 0 ; i < len(str) ; i++ {
-		if str[len(str) - (i + 1)] == str[i] && flag == 1 {
-			flag = 1
-		} else {
-			flag = 0
-		}
+
+type param struct {
+	On    bool
+	Ammo  int
+	Power int
+}
+
+func (s *param) Shoot() bool {
+	if s.On == false {
+		return false
+	} else if s.Ammo > 0 {
+		s.Ammo -= 1
+		return true
 	}
-	if flag == 1 {
-		fmt.Println("Палиндром")
-	} else {
-		fmt.Println("Нет")
+	return false
+}
+func (r *param) RideBike() bool {
+	if r.On == false {
+		return false
+	} else if r.Power > 0 {
+		r.Power -= 1
+		return true
+
+	}
+	return false
+}
+func main() {
+	testStruct := new(param)
+	fmt.Scan(&testStruct.On, &testStruct.Ammo, &testStruct.Power)
+	if testStruct.Ammo > 0 {
+		lol := testStruct.Shoot()
+		fmt.Printf("On=%t Ammo=%d Shoot()=%t\n", testStruct.On, testStruct.Ammo, lol)
+	}
+	if testStruct.Power > 0 {
+		lol := testStruct.RideBike()
+		fmt.Printf("On=%t Power=%d Shoot()=%t\n", testStruct.On, testStruct.Power, lol)
 	}
 }
