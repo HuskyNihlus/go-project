@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package api;
 
-option go_package = "github.com/grpc/grpc-go";
+option go_package = "github.com/HuskyNihlus/go-project";
 
 service Adder {
     rpc Add(AddRequest) returns (AddResponse) {}
