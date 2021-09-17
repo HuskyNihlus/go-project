@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/grpc/grpc-go";
+
+service Adder {
+    rpc Add(AddRequest) returns (AddResponse) {}
+}
+
+message AddRequest {
+    string id = 1;
+    string name = 2;
+    string last_name = 3;
+    int32 age = 4;
+    int64 recording_date = 5;
+}
+
+message AddResponse {
+    string result = 1;
+}
